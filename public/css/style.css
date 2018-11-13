@@ -1,0 +1,335 @@
+/*
+==========================================================================
+style.css
+==========================================================================
+*/
+
+html, body, div {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("../images/bg.jpg") no-repeat fixed center;
+  background-size: cover;
+}
+
+/*
+==========================================================================
+Navigation
+==========================================================================
+*/
+
+ul {
+  list-style-type: none;
+  width:auto;
+  margin-top: 50px !important;
+  padding: 0;
+  background-color: #eee;
+}
+
+li a {
+  display: block;
+  padding:8px 16px;
+  text-decoration: none !important;
+  font-weight: 200;
+  color:black;
+}
+
+li a:hover {
+  background-color:#ff925d;
+  color:white;
+}
+
+/*
+==========================================================================
+Display
+==========================================================================
+*/
+
+.display-info {
+  display: block;
+  margin-top: 50px !important;
+  width: auto;
+  height: auto;
+  background-color: lightgreen;
+}
+
+.display-title {
+  padding:8px 16px;
+  width: auto;
+  height: auto;
+  font-weight: 200;
+}
+
+.display-content {
+  width:auto;
+  height:300px;
+  background-color: lightyellow;
+}
+
+.restaurant-image {
+  display: block;
+  width: auto;
+  height:160px;
+  word-wrap: break-word;
+  background-color: pink;
+}
+
+.restaurant-info li{
+  display: block;
+  width: auto;
+  height:auto;
+  word-wrap: break-word;
+  margin-left: 10px;
+}
+
+.restaurant-info h3 {
+  margin: 5px;
+}
+
+.display-save {
+  width: auto;
+  height:auto;
+  background-color:teal;
+}
+
+.save-button {
+  float:right;
+  padding:8px 16px;
+  height:80%;
+  font-weight: 500;
+  border:none;
+  cursor: pointer;
+  background-color:orange;
+}
+
+
+
+/*
+==========================================================================
+Message
+==========================================================================
+*/
+
+.chat-screen {
+  height: 100%;
+  margin: 20px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f7f7f7;
+}
+
+.heading {
+  padding: 10px 16px 10px 16px;
+  margin: 0;
+  height: 60px;
+  width: 100%;
+  background-color: #eee;
+  z-index: 1000;
+}
+
+.heading-avatar-icon img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+.heading-name a {
+  display: block;
+  padding:8px 16px;
+  text-align: center;
+  text-decoration: none !important;
+  font-size: 16px;
+  font-weight: 600;
+  color:black;
+}
+
+.time-meta {
+  text-align: right;
+  font-size: 12px;
+  padding: 1% !important;
+  color: rgba(0, 0, 0, .4);
+  vertical-align: baseline;
+}
+
+/*Conversation*/
+
+.conversation {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100%;
+  /*width: 100%;*/
+  border-left: 1px solid rgba(0, 0, 0, .08);
+  overflow-y: auto;
+}
+
+.message {
+  padding: 0 !important;
+  margin: 0 !important;
+  /*background: url("w.jpg") no-repeat fixed center;*/
+  background-size: cover;
+  overflow-y: auto;
+  border: 1px solid #f7f7f7;
+  height: calc(100% - 120px);
+}
+
+.previous a {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.message-body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto;
+  height: auto;
+}
+
+.message-main-receiver {
+  padding: 3px 10px !important;
+  margin-right: 15%;
+  max-width: 80%;
+}
+
+.message-main-sender {
+  padding: 3px 5px !important;
+  margin-left:15%;
+  max-width: 80%;
+}
+
+.message-text {
+  position: relative;
+  margin: 0 !important;
+  padding: 5px !important;
+  word-wrap:break-word;
+  font-weight: 200;
+  font-size: 12px;
+  padding-bottom: 0 !important;
+}
+
+.time-sender {
+  display: inline-block;
+  width:35px;
+  float:right;
+}
+
+.message-date-sender {
+  display:table;
+  margin:0 !important;
+  width: auto !important;
+  font-size: 11px;
+  color: #9a9a9a;
+}
+
+.message-time-sender {
+  display: table;
+  width: auto !important;
+  font-size: 11px;
+  color: #9a9a9a;
+}
+
+.time-receiver {
+  display: inline-block;
+  width:40px;
+}
+
+.message-date-receiver {
+  display:table;
+  margin:0 !important;
+  width: auto !important;
+  font-size: 11px;
+  color: #9a9a9a;
+}
+.message-time-receiver {
+  display: table;
+  width: auto !important;
+  font-size: 11px;
+  color: #9a9a9a;
+}
+
+.receiver {
+  display: inline-block;
+  padding: 4px 10px 7px !important;
+  width: auto !important;
+  border-radius: 15px 15px 15px 0;
+  font-size: 12px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  word-wrap: break-word;
+  background: #ffffff;
+}
+
+.sender {
+  display: inline-block;
+  float:right  !important;
+  padding: 4px 10px 7px !important;
+  width: auto !important;
+  border-radius: 15px 15px 0 15px;
+  font-size: 12px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  word-wrap: break-word;
+  background: #dcf8c6;
+}
+
+
+/*Reply*/
+
+.reply {
+  height: 60px;
+  width: 100%;
+  background-color: #f5f1ee;
+  padding: 10px 5px 10px 5px !important;
+  margin: 0 !important;
+  z-index: 1000;
+}
+
+.reply-recording {
+  padding: 5px !important;
+}
+
+.reply-recording i {
+  text-align: center;
+  padding: 5px !important;
+  color: #93918f;
+  cursor: pointer;
+}
+
+.reply-send {
+  padding: 5px !important;
+}
+
+.reply-send i {
+  text-align: center;
+  padding: 5px !important;
+  color: #93918f;
+  cursor: pointer;
+}
+
+.reply-main {
+  padding: 2px 5px !important;
+}
+
+.reply-main textarea {
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  padding: 5px !important;
+  outline: none;
+  border: none;
+
+  box-shadow: none;
+  height: 100%;
+  font-size: 12px;
+}
+
+.reply-main textarea:focus {
+  outline: none;
+  border: none;
+  text-indent: 5px;
+  box-shadow: none;
+}
+
