@@ -18,8 +18,7 @@ const app = express();
 app.use(express.static(__dirname + '/views')); // HTML
 app.use(express.static(__dirname + '/public')); // CSS, JS and Images
 
-var bc_cities="";
-
+//var bc_cities="";
 // Create HTTP server
 const server = app.listen(8080, function(){
 	console.log('Listening on port 8080');
@@ -39,6 +38,7 @@ app.get('/', (request, response) => {
 
 // Listen on every connection
 
+
 function Listen() {
 	socketio.on('connection', function(socket){
 		socket.on('chat request', (data) => {
@@ -51,16 +51,18 @@ function Listen() {
 
 			request.on('response', (response) => {
 				var chatResponse = response.result.fulfillment.speech;
-				bc_cities = response.result.parameters.bc_cities;
+				var bc_cities = response.result.parameters.bc_cities;
 				var meal_type = response.result.parameters.meal_type;
 				var occasion = response.result.parameters.occasion;
-				//console.log('Chat Response: ' + chatResponse);
 				socket.emit('ai response', chatResponse); // Send messages
-				// console.log('bc_cities: ',bc_cities);
-				return console.log(`bc cities: ${bc_cities}`);
+				if(response.result.actionIncomplete == false) {
+					socket.emit('chat complete', response.result.parameters); //Send chatbot parameters
+					console.log(`Result: ${response.result.parameters.meal_type} in ${response.result.parameters.bc_cities}`);
+				}
+				//console.log(response);
+				//return console.log(`bc cities: ${bc_cities}`);
 				// console.log('meal_type: ', meal_type);
 				// console.log('occasion: ', occasion);
-				//console.log(response);
 			});
 
 			request.on('error', (error) => {
