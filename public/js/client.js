@@ -7,6 +7,8 @@ $(function(){
 const socket = io();
 const query = document.querySelector('#comment');
 const html = document.querySelector('#conversation');
+var submitButton = document.getElementById("submitButton");
+
 
 // Get the first element in the docuent with id="chat-send"
 document.querySelector('#chat-send').addEventListener('click', () => {
@@ -83,3 +85,13 @@ socket.on('ai response', function(response) {
 socket.on('chat complete', function(parameters) {
     document.getElementById("details").innerHTML = `This is a ${parameters.meal_type} restaurant in ${parameters.bc_cities}!`;
 });
+
+
+
+document.getElementById("fav-open").addEventListener("click", function() {
+	document.getElementById("chat-screen").style.display = "none";
+	document.getElementById("favorites").style.display = "block";
+	document.getElementById("home-open").style.color = "grey";
+	document.getElementById("fav-open").style.color = "#F07869";
+});
+

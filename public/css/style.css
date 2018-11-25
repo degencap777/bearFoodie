@@ -96,6 +96,7 @@ li a {
   text-decoration: none !important;
   font-weight: 200;
   color:grey;
+  cursor: pointer;
 }
 
 li img {
@@ -110,8 +111,8 @@ li a:hover {
   color:#F07869;
 }
 
-li a:visited {
-  color:#F07869;
+#home-open {
+  color:#F07869;;
 }
 
 #prof-name {
@@ -246,7 +247,7 @@ Display
   background-color:teal;
 }
 
-.save-button {
+#submitButton {
   float:right;
   padding:8px 16px;
   height:80%;
@@ -262,8 +263,8 @@ Favorites
 ==========================================================================
 */
 
-.favorites {
-  display: block;
+#favorites {
+  display:none;
 }
 
 .favorites-title {
@@ -339,8 +340,8 @@ Message
 ==========================================================================
 */
 
-.chat-screen {
-  display: none;
+#chat-screen {
+  display: block;
   margin-top: 20px !important;
   height: calc(100% - 10px);
   /*margin-top: 30px;*/

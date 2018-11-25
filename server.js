@@ -13,7 +13,9 @@ const uuidv1 = require('uuid/v1'); // Generate and return a RFC4122 v1 (timestam
 const AI_SESSION_ID = uuidv1(); // Maintain context and flow of the conversation,if the session id is same, DialogFlow will treat it as the part of same conversation.
 
 const express = require('express');
+const fs = require('fs');
 const app = express();
+
 
 app.use(express.static(__dirname + '/views')); // HTML
 app.use(express.static(__dirname + '/public')); // CSS, JS and Images
@@ -37,8 +39,6 @@ app.get('/', (request, response) => {
 });
 
 // Listen on every connection
-
-
 function Listen() {
 	socketio.on('connection', function(socket){
 		socket.on('chat request', (data) => {
