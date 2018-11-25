@@ -209,15 +209,13 @@ Display
 }
 
 .restaurant-name {
-  position: absolute;
-  bottom:0;
   padding-left:10px !important;
   margin:0 !important;
   width: auto;
   height:auto;
   font-weight: 700;
   font-size: 30px;
-  color:white;
+  color:black;
   z-index: 99999;
 }
 
