@@ -79,3 +79,7 @@ socket.on('ai response', function(response) {
 	html.innerHTML = html.innerHTML + htmlResponse;
 });
 
+
+socket.on('chat complete', function(parameters) {
+    document.getElementById("details").innerHTML = `This is a ${parameters.meal_type} restaurant in ${parameters.bc_cities}!`;
+});
