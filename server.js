@@ -3,7 +3,7 @@
 // const port = process.env.PORT || 8080;
 
 const dotenv = require('dotenv'); // DotEnv library will look for the .env file to set the environment variables
-dotenv.load(); // Load our environment variables
+dotenv.load(); // Load qchisq(0.95, 16)our environment variables
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN; // Access environment variables
 
 const apiai = require('apiai');

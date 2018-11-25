@@ -3,6 +3,19 @@
 style.css
 ==========================================================================
 */
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+.container {
+  width:100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
+  background-color: #f7f7f7;
+}
+
 
 html, body, div {
   height: 100%;
@@ -10,13 +23,51 @@ html, body, div {
   overflow: hidden;
   padding: 0;
   margin: 0;
+  padding-left: 0! important;
   box-sizing: border-box;
 }
 
 body {
-  background: url("../images/bg.jpg") no-repeat fixed center;
-  background-size: cover;
+  /*background: url("../images/bg.jpg") no-repeat fixed center;*/
+  /*background-size: cover;*/
 }
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+li  {
+  display: block;
+  text-decoration: none !important;
+  font-weight: 200;
+  width:auto;
+}
+
+/*
+==========================================================================
+Header
+==========================================================================
+*/
+
+.header {
+  width: 100%;
+  height:30px;
+  background-color: #f7f7f7;
+  border-bottom:1px solid rgba(0, 0, 0, .08);
+  /*background-color:#F07869;*/
+}
+
+
+.header-name {
+  width:100px;
+  height:auto;
+  text-align: center;
+  padding:5px !important;
+  margin-left:20px;
+  color:#F07869;
+}
+
 
 /*
 ==========================================================================
@@ -24,12 +75,19 @@ Navigation
 ==========================================================================
 */
 
+.navigation {
+  padding-right: 0 !important;
+  border-right:1px solid rgba(0, 0, 0, .08);
+  background-color: white;
+}
+
 ul {
   list-style-type: none;
   width:auto;
-  margin-top: 50px !important;
-  padding: 0;
-  background-color: #eee;
+  margin-top: 20px !important;
+  padding: 0 !important;
+  text-align: center;
+ /* background-color: #eee;*/
 }
 
 li a {
@@ -37,13 +95,63 @@ li a {
   padding:8px 16px;
   text-decoration: none !important;
   font-weight: 200;
-  color:black;
+  color:grey;
+}
+
+li img {
+  position: relative;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  border: 1px solid rgba(0, 0, 0, .08);
 }
 
 li a:hover {
-  background-color:#ff925d;
-  color:white;
+  color:#F07869;
 }
+
+li a:visited {
+  color:#F07869;
+}
+
+#prof-name {
+  color:black;
+}
+
+#nav-arrow {
+  font-size: 15px;
+  margin-left: 5px;
+  color:grey;
+}
+
+.user-active {
+    width: 14px;
+    height: 14px;
+    background-color: #39FF14;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, .08);
+    position: absolute;
+    top: 14%;
+    left: 57.5%;
+}
+
+#nav-profile-name a{
+  font-weight: 700;
+  font-size:16px;
+  font-family: sans-serif;
+}
+
+i.fa.fa-home, i.fa-comments, i.fa.fa-heart, i.fa.fa-cog{
+  float:left;
+  margin-left: 10%;
+  font-size: 15px;
+}
+
 
 /*
 ==========================================================================
@@ -51,12 +159,20 @@ Display
 ==========================================================================
 */
 
+.display {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-left: 1px solid rgba(0, 0, 0, .08);
+}
+
 .display-info {
   display: block;
-  margin-top: 50px !important;
-  width: auto;
+  margin-top: 30px !important;
+  margin-left: 12%;
+  width: 80%;
   height: auto;
-  background-color: lightgreen;
+  color:grey;
+  border:1px solid rgba(0, 0, 0, .08);
 }
 
 .display-title {
@@ -67,30 +183,65 @@ Display
 }
 
 .display-content {
+  position: relative;
   width:auto;
-  height:300px;
+  height:200px;
   background-color: lightyellow;
 }
 
 .restaurant-image {
   display: block;
   width: auto;
-  height:160px;
+  height:200px;
   word-wrap: break-word;
-  background-color: pink;
+  background-image: url("https://gyozabar.ca/wp-content/uploads/2015/03/IMG_8531-2-1030x687.jpg");
+  background-size: cover;
 }
 
-.restaurant-info li{
-  display: block;
+.restaurant-image:after {
+  background-color: rgba(0,0,0,0.2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+.restaurant-name {
+  position: absolute;
+  bottom:0;
+  padding-left:10px !important;
+  margin:0 !important;
   width: auto;
   height:auto;
-  word-wrap: break-word;
-  margin-left: 10px;
+  font-weight: 700;
+  font-size: 30px;
+  color:white;
+  z-index: 99999;
 }
 
-.restaurant-info h3 {
-  margin: 5px;
+.restaurant-info{
+  display: block;
+  width: 100%;
+  height:100px;
+  word-wrap: break-word;
+  z-index: 99999;
 }
+
+.restaurant-reserve li{
+  display: table-cell;
+  vertical-align: middle;
+  margin-top: 10px !important;
+  padding:0 !important;
+  width:200px;
+  height:40px;
+  font-size: 15px;
+  text-align: center;
+  border:1px solid rgba(0, 0, 0, .08);
+}
+
+
 
 .display-save {
   width: auto;
@@ -117,9 +268,9 @@ Message
 */
 
 .chat-screen {
-  height: 100%;
-  margin: 20px;
-  padding: 0;
+  margin-top: 20px !important;
+  height: calc(100% - 10px);
+  /*margin-top: 30px;*/
   overflow: hidden;
   background-color: #f7f7f7;
 }
@@ -133,7 +284,8 @@ Message
   z-index: 1000;
 }
 
-.heading-avatar-icon img {
+/*.heading-avatar-icon img,*/ .bot-icon {
+  vertical-align: inherit;
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -163,9 +315,6 @@ Message
   padding: 0 !important;
   margin: 0 !important;
   height: 100%;
-  /*width: 100%;*/
-  border-left: 1px solid rgba(0, 0, 0, .08);
-  overflow-y: auto;
 }
 
 .message {
@@ -176,11 +325,6 @@ Message
   overflow-y: auto;
   border: 1px solid #f7f7f7;
   height: calc(100% - 120px);
-}
-
-.previous a {
-  text-decoration: none;
-  font-weight: 700;
 }
 
 .message-body {
@@ -214,7 +358,7 @@ Message
 
 .time-sender {
   display: inline-block;
-  width:35px;
+  width:40px;
   float:right;
 }
 
@@ -222,14 +366,14 @@ Message
   display:table;
   margin:0 !important;
   width: auto !important;
-  font-size: 11px;
+  font-size: 10px;
   color: #9a9a9a;
 }
 
 .message-time-sender {
   display: table;
   width: auto !important;
-  font-size: 11px;
+  font-size: 10px;
   color: #9a9a9a;
 }
 
@@ -248,7 +392,7 @@ Message
 .message-time-receiver {
   display: table;
   width: auto !important;
-  font-size: 11px;
+  font-size: 10px;
   color: #9a9a9a;
 }
 
@@ -272,7 +416,8 @@ Message
   font-size: 12px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
   word-wrap: break-word;
-  background: #dcf8c6;
+  color:white;
+  background: #F07869;
 }
 
 
@@ -332,4 +477,3 @@ Message
   text-indent: 5px;
   box-shadow: none;
 }
-

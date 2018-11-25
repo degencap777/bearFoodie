@@ -39,7 +39,7 @@ function replyMain(e){
     	<div class=\"message-text\">" +
     	query.value +
     	"</div></div>\ <div class=\"time-sender\">\
-    	\<span class=\"message-date-receiver\">"
+    	\<span class=\"message-date-sender\">"
 		+ months[date.getMonth()] + " " + date.getDate() +
 		"</span>\
     	\<span class=\"message-time-sender\">"
@@ -62,6 +62,7 @@ socket.on('ai response', function(response) {
 	if(response == '') response = '(No answer...)';
 	var htmlResponse = "<div class=\"row message-body\">\
 	<div class=\"col-sm-12 message-main-receiver\">\
+	<img src=\"images/avatar.jpg\" class=\"bot-icon\">\
 	<div class=\"receiver\">\
 	<div class=\"message-text\">" +
 	response +
