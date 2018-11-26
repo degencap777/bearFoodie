@@ -10,6 +10,7 @@ const html = document.querySelector('#conversation');
 var submitButton = document.getElementById("submitButton");
 
 
+
 // Get the first element in the docuent with id="chat-send"
 document.querySelector('#chat-send').addEventListener('click', () => {
 	var date = new Date();
@@ -82,9 +83,14 @@ socket.on('ai response', function(response) {
 });
 
 
-socket.on('chat complete', function(parameters) {
-    document.getElementById("details").innerHTML = `This is a ${parameters.meal_type} restaurant in ${parameters.bc_cities}!`;
+socket.on('chat complete', function(searchData) {
+    document.getElementById("details").innerHTML = `This is a ${searchData.parameters.meal_type} restaurant in ${searchData.parameters.bc_cities}!`;
+    document.getElementById("restaurantName").innerHTML = searchData.searchData.result.name;
+    document.getElementById("address").innerHTML = searchData.searchData.result.formatted_address;
+    document.getElementById("phoneNum").innerHTML = searchData.searchData.result.formatted_phone_number;
+
 });
+
 
 
 
@@ -94,4 +100,3 @@ document.getElementById("fav-open").addEventListener("click", function() {
 	document.getElementById("home-open").style.color = "grey";
 	document.getElementById("fav-open").style.color = "#F07869";
 });
-
