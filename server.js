@@ -13,6 +13,7 @@ const uuidv1 = require('uuid/v1'); // Generate and return a RFC4122 v1 (timestam
 const AI_SESSION_ID = uuidv1(); // Maintain context and flow of the conversation,if the session id is same, DialogFlow will treat it as the part of same conversation.
 
 const express = require('express');
+const fs = require('fs');
 const app = express();
 
 const search = require('./search');
@@ -37,6 +38,7 @@ app.get('/', (request, response) => {
 	res.sendFile(__dirname + '/views/index.html');
 });
 
+<<<<<<< HEAD
 function getSearchTerm(params) {
 	var string = "";
 	for (var item in params) {

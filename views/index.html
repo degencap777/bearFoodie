@@ -38,19 +38,19 @@
 							</a>
 						<li>
   						<li>
-  							<a href="index.html">
+  							<a href="index.html" id="home-open">
   								<i class="fa fa-home" aria-hidden="true"></i>
   								Home
   							</a>
   						</li>
 						<li>
-							<a>
+							<a id="chat-open">
 								<i class="fa fa-comments" aria-hidden="true"></i>
 								Chat
 							</a>
 						</li>
 						<li>
-							<a>
+							<a id="fav-open">
 								<i class="fa fa-heart" aria-hidden="true"></i>
 								Favorites
 							</a>
@@ -65,17 +65,42 @@
 					</ul>
 				</div>
 				<div class="col-md-6 col-sm-5 col-xs-5 conversation">
-					<div class="chat-screen">
-					<!-- <div class="heading">
-						<div class="col-sm-6 col-md-3 col-xs-4 heading-avatar">
-							<div class="heading-avatar-icon">
-								<img src="images/avatar.jpg">
+					<div id="favorites">
+						<div class="favorites-title">
+							Your Favorites
+						</div>
+						<div class="row restaurants">
+							<div class="savedRestaurant">
+								<div class="fav-image">
+								</div>
+								<div class="fav-name">
+									Gyoza Bar
+								</div>
+								<div class="fav-action">
+									<i class="fa fa-share-alt" aria-hidden="true"></i>
+									Share
+									<i class="fa fa-trash" aria-hidden="true"></i>
+									Remove
+								</div>
+								<div class="fav-info">
+									<li>
+										<i class="fa fa-clock-o" aria-hidden="true"></i>
+										Open from
+									</li>
+									<li>
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										622 W Pender St
+									</li>
+									<li>
+										<i class="fa fa-phone" aria-hidden="true"></i>
+										(604)-336-5563
+									</li>
+								</div>
 							</div>
 						</div>
-						<div class="col-sm-6 col-xs-6 heading-name">
-							<a>Ask Me!</a>
-						</div>
-					</div> -->
+					</div>
+					<div id="chat-screen">
+
 					<div class="row message" id="conversation">
 						<div class="row message-body">
 						<div class="col-sm-12 message-main-receiver">
@@ -151,7 +176,7 @@
 								</li>
 						</div>
 						<div class="display-save">
-							<button type="submit" value="Save" class="save-button">
+							<button type="submit" value="Save"  id="submitButton">
 								Save
 							</button>
 						</div>

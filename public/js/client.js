@@ -7,6 +7,8 @@ $(function(){
 const socket = io();
 const query = document.querySelector('#comment');
 const html = document.querySelector('#conversation');
+var submitButton = document.getElementById("submitButton");
+
 
 
 // Get the first element in the docuent with id="chat-send"
@@ -87,4 +89,14 @@ socket.on('chat complete', function(searchData) {
     document.getElementById("address").innerHTML = searchData.searchData.result.formatted_address;
     document.getElementById("phoneNum").innerHTML = searchData.searchData.result.formatted_phone_number;
 
+});
+
+
+
+
+document.getElementById("fav-open").addEventListener("click", function() {
+	document.getElementById("chat-screen").style.display = "none";
+	document.getElementById("favorites").style.display = "block";
+	document.getElementById("home-open").style.color = "grey";
+	document.getElementById("fav-open").style.color = "#F07869";
 });

@@ -96,6 +96,7 @@ li a {
   text-decoration: none !important;
   font-weight: 200;
   color:grey;
+  cursor: pointer;
 }
 
 li img {
@@ -110,8 +111,8 @@ li a:hover {
   color:#F07869;
 }
 
-li a:visited {
-  color:#F07869;
+#home-open {
+  color:#F07869;;
 }
 
 #prof-name {
@@ -240,14 +241,13 @@ Display
 }
 
 
-
 .display-save {
   width: auto;
   height:auto;
   background-color:teal;
 }
 
-.save-button {
+#submitButton {
   float:right;
   padding:8px 16px;
   height:80%;
@@ -257,15 +257,91 @@ Display
   background-color:orange;
 }
 
+/*
+==========================================================================
+Favorites
+==========================================================================
+*/
 
+#favorites {
+  display:none;
+}
 
+.favorites-title {
+  padding:8px;
+  margin-left: 10px;
+  width:auto;
+  height:auto;
+  font-weight: 700;
+  font-size: 20px;
+  color:#F07869;
+}
+
+.restaurants {
+  margin: 0 !important;
+  position: relative;
+  width:100%;
+  height:auto;
+  border-bottom :1px solid rgba(0, 0, 0, .08);
+  background-color: white;
+}
+
+.fav-image {
+  display: inline-block;
+  margin:10px;
+  width:125px;
+  height:125px;
+  background-image: url("https://gyozabar.ca/wp-content/uploads/2015/03/IMG_8531-2-1030x687.jpg");
+  background-size: cover;
+}
+
+.fav-name {
+  display: inline-block;
+  position: absolute;
+  padding:8px;
+  width:auto;
+  height:auto;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.fav-action {
+  display: inline;
+  position: absolute;
+  padding: 8px;
+  top:40px;
+  width:auto;
+  height:auto;
+  background-color: lightyellow;
+  cursor: pointer;
+}
+
+.fav-action i, {
+  padding: 8px;
+}
+
+.fav-info i {
+  padding-right: 10px;
+  color:grey;
+}
+
+.fav-info {
+  display: inline;
+  position: absolute;
+  padding:8px;
+  bottom:0;
+  width:300px;
+  height:auto;
+  background-color: pink;
+}
 /*
 ==========================================================================
 Message
 ==========================================================================
 */
 
-.chat-screen {
+#chat-screen {
+  display: block;
   margin-top: 20px !important;
   height: calc(100% - 10px);
   /*margin-top: 30px;*/
