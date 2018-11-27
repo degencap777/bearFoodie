@@ -89,23 +89,58 @@ socket.on('chat complete', function(searchData) {
     document.getElementById("address").innerHTML = searchData.searchData.result.formatted_address;
     document.getElementById("phoneNum").innerHTML = searchData.searchData.result.formatted_phone_number;
 
-    document.getElementById("submitButton").addEventListener("click", function() {
-    	var obj = {
-    		restaurant_name: searchData.searchData.result.name,
-    		address: searchData.searchData.result.formatted_address,
-    		phone_number: searchData.searchData.result.formatted_phone_number
-    	};
-    	var obj = JSON.stringify(obj);
-    	localStorage.setItem('key', obj);
+    document.getElementById("submitButton").addEventListener("click", function(){
+    	console.log("added");
+    	socket.emit('save request');
+    });
+  //   	var jsonObj = {
+  //   		restaurant_name: searchData.searchData.result.name,
+  //   		address: searchData.searchData.result.formatted_address,
+  //   		phone_number: searchData.searchData.result.formatted_phone_number
+  //   	};
 
-    	var data = localStorage.getItem('key');
-    	var jsobj = JSON.parse(data);
-    	document.getElementById("fav-name").innerHTML = searchData.searchData.result.name;
+  //   	// var obj = JSON.stringify(jsonObj);
+  //   	// localStorage.setItem('key', obj);
+
+  // //   	var div= document.createElement("div");
+  // //   	div.innerHTML = "<div class=\"col-sm-12 savedRestaurant\">\
+		// // <div class=\"fav-name\">" + jsonObj.restaurant_name +
+		// // "</div>\
+		// // </div>";
+
+  // //   	div.style.backgroundColor="red";
+
+  // //   	var main = document.getElementById("restaurants");
+  // //   	main.appendChild(div);
+
+
+  //   });
+    	// var obj = {
+    	// 	restaurant_name: searchData.searchData.result.name,
+    	// 	address: searchData.searchData.result.formatted_address,
+    	// 	phone_number: searchData.searchData.result.formatted_phone_number
+    	// };
+    	// var obj = JSON.stringify(obj);
+    	// localStorage.setItem('key', obj);
+
+    	// var data = localStorage.getItem('key');
+    	// var jsobj = JSON.parse(data);
+
+    	// var div = document.createElement("div");
+    	// div.class="col-sm-12 savedRestaurant";
+    	// div.style.backgroundColor="red";
+
+    	// var main = document.getElementById("restaurants");
+    	// main.appendChild(div);
+
+    	// var favName = document.getElementById("fav-name").innerHTML = searchData.searchData.result.name;
+    	// favName.appendChild(div);
+
     	// document.getElementById("fav-name").innerHTML = searchData.searchData.result.name;
     	// document.getElementById("fav-hours").innerHTML = searchData.searchData.result.formatted_address;
     	// document.getElementById("fav-phone").innerHTML = searchData.searchData.result.formatted_phone_number;
-	});
 });
+
 
 
 

@@ -19,6 +19,12 @@ const app = express();
 const search = require('./search');
 const save = require('./request');
 
+var restaurantName;
+var address;
+var phoneNumber;
+var photo;
+var website;
+
 
 app.use(express.static(__dirname + '/views')); // HTML
 app.use(express.static(__dirname + '/public')); // CSS, JS and Images
@@ -38,6 +44,11 @@ socketio.on('connection', function(socket){
 // Get User Interface
 app.get('/', (request, response) => {
 	res.sendFile(__dirname + '/views/index.html');
+
+});
+
+app.post('/user', (request, response) => {
+	saveRestaurant(jsonObj);
 });
 
 function getSearchTerm(params) {
@@ -47,6 +58,12 @@ function getSearchTerm(params) {
 	}
 	return encodeURI(string);
 }
+
+
+function saveRestaurant(jsonObj) {
+	fs.writeFileSync('request-data.json', JSON.stringify(jsonObj));
+}
+
 
 // Listen on every connection
 function Listen() {
@@ -68,6 +85,18 @@ function Listen() {
 				if(response.result.actionIncomplete == false) {
 					search.placeSearch(getSearchTerm(response.result.parameters)).then((data) => {
 						console.log(data);
+						var restaurantName = data.result.name;
+						var address = data.result.formatted_address;
+						var phoneNumber = data.result.formatted_phone_number;
+						var photo = data.result.photos;
+						var website = data.result.website;
+
+						var jsonObj = {
+							restaurant_name : restaurantName,
+							restaurant_address: address,
+							restaurant_phone: phoneNumber,
+							restaurant_website: website
+						}
 						socket.emit('chat complete', {parameters: response.result.parameters, searchData: data}); //Send chatbot parameters
 					});
 					console.log(`Result: ${response.result.parameters.meal_type} in ${response.result.parameters.bc_cities}`);
