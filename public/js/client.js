@@ -89,8 +89,23 @@ socket.on('chat complete', function(searchData) {
     document.getElementById("address").innerHTML = searchData.searchData.result.formatted_address;
     document.getElementById("phoneNum").innerHTML = searchData.searchData.result.formatted_phone_number;
 
-});
+    document.getElementById("submitButton").addEventListener("click", function() {
+    	var obj = {
+    		restaurant_name: searchData.searchData.result.name,
+    		address: searchData.searchData.result.formatted_address,
+    		phone_number: searchData.searchData.result.formatted_phone_number
+    	};
+    	var obj = JSON.stringify(obj);
+    	localStorage.setItem('key', obj);
 
+    	var data = localStorage.getItem('key');
+    	var jsobj = JSON.parse(data);
+    	document.getElementById("fav-name").innerHTML = searchData.searchData.result.name;
+    	// document.getElementById("fav-name").innerHTML = searchData.searchData.result.name;
+    	// document.getElementById("fav-hours").innerHTML = searchData.searchData.result.formatted_address;
+    	// document.getElementById("fav-phone").innerHTML = searchData.searchData.result.formatted_phone_number;
+	});
+});
 
 
 
@@ -100,3 +115,5 @@ document.getElementById("fav-open").addEventListener("click", function() {
 	document.getElementById("home-open").style.color = "grey";
 	document.getElementById("fav-open").style.color = "#F07869";
 });
+
+

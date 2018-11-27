@@ -17,6 +17,8 @@ const fs = require('fs');
 const app = express();
 
 const search = require('./search');
+const save = require('./request');
+
 
 app.use(express.static(__dirname + '/views')); // HTML
 app.use(express.static(__dirname + '/public')); // CSS, JS and Images
@@ -38,7 +40,6 @@ app.get('/', (request, response) => {
 	res.sendFile(__dirname + '/views/index.html');
 });
 
-<<<<<<< HEAD
 function getSearchTerm(params) {
 	var string = "";
 	for (var item in params) {
@@ -48,7 +49,6 @@ function getSearchTerm(params) {
 }
 
 // Listen on every connection
-
 function Listen() {
 	socketio.on('connection', function(socket){
 		socket.on('chat request', (data) => {
@@ -70,7 +70,6 @@ function Listen() {
 						console.log(data);
 						socket.emit('chat complete', {parameters: response.result.parameters, searchData: data}); //Send chatbot parameters
 					});
-					
 					console.log(`Result: ${response.result.parameters.meal_type} in ${response.result.parameters.bc_cities}`);
 				}
 				//console.log(response);

@@ -295,7 +295,7 @@ Favorites
   background-size: cover;
 }
 
-.fav-name {
+#fav-name {
   display: inline-block;
   position: absolute;
   padding:8px;

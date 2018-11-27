@@ -49,6 +49,7 @@ const placeSearch = async (searchTerm) => {
     return placeDetails
 }
 
+
 module.exports = {
     placeSearch
 }
