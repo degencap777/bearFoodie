@@ -5,6 +5,7 @@
 const dotenv = require('dotenv'); // DotEnv library will look for the .env file to set the environment variables
 dotenv.load(); // Load qchisq(0.95, 16)our environment variables
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN; // Access environment variables
+const API_KEY = process.env.GOOGLE_KEY
 
 const apiai = require('apiai');
 const ai = apiai(ACCESS_TOKEN);
@@ -84,6 +85,7 @@ function Listen() {
 				socket.emit('ai response', chatResponse); // Send messages
 				if(response.result.actionIncomplete == false) {
 					search.placeSearch(getSearchTerm(response.result.parameters)).then((data) => {
+
 						console.log(data);
 						var restaurantName = data.result.name;
 						var address = data.result.formatted_address;
@@ -98,6 +100,11 @@ function Listen() {
 							restaurant_website: website
 						}
 						socket.emit('chat complete', {parameters: response.result.parameters, searchData: data}); //Send chatbot parameters
+
+						console.log(data.result);
+						var photoLink = `https://maps.googleapis.com/maps/api/place/photo?maxheight=200&key=${API_KEY}&photoreference=${data.result.photos[0].photo_reference}`
+						socket.emit('chat complete', {parameters: response.result.parameters, searchData: data, photoUrl: photoLink}); //Send chatbot parameters
+
 					});
 					console.log(`Result: ${response.result.parameters.meal_type} in ${response.result.parameters.bc_cities}`);
 				}

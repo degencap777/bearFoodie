@@ -88,6 +88,7 @@ socket.on('chat complete', function(searchData) {
     document.getElementById("restaurantName").innerHTML = searchData.searchData.result.name;
     document.getElementById("address").innerHTML = searchData.searchData.result.formatted_address;
     document.getElementById("phoneNum").innerHTML = searchData.searchData.result.formatted_phone_number;
+    document.getElementById("restaurant-image").style.backgroundImage = `url("${searchData.photoUrl}")`
 
     document.getElementById("submitButton").addEventListener("click", function(){
     	console.log("added");

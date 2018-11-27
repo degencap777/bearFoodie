@@ -190,7 +190,7 @@ Display
   /*background-color: lightyellow;*/
 }
 
-.restaurant-image {
+#restaurant-image {
   display: block;
   width: auto;
   height:200px;
@@ -199,7 +199,7 @@ Display
   background-size: cover;
 }
 
-.restaurant-image:after {
+#restaurant-image:after {
   background-color: rgba(0,0,0,0.2);
   position: absolute;
   top: 0;
