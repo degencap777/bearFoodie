@@ -154,5 +154,3 @@ document.getElementById("fav-open").addEventListener("click", function() {
 	document.getElementById("home-open").style.color = "grey";
 	document.getElementById("fav-open").style.color = "#F07869";
 });
-
-
