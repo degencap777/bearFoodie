@@ -20,11 +20,12 @@ const app = express();
 const search = require('./search');
 const save = require('./request');
 
-var restaurantName;
-var address;
-var phoneNumber;
-var photo;
-var website;
+var lastSearch
+// var restaurantName;
+// var address;
+// var phoneNumber;
+// var photo;
+// var website;
 
 
 app.use(express.static(__dirname + '/views')); // HTML
@@ -48,9 +49,6 @@ app.get('/', (request, response) => {
 
 });
 
-app.post('/user', (request, response) => {
-	saveRestaurant(jsonObj);
-});
 
 function getSearchTerm(params) {
 	var string = "";
@@ -62,13 +60,32 @@ function getSearchTerm(params) {
 
 
 function saveRestaurant(jsonObj) {
-	fs.writeFileSync('request-data.json', JSON.stringify(jsonObj));
+	fs.appendFile('saveData.json', JSON.stringify(jsonObj), function(err, file) {
+		if (err) throw err;
+		console.log('Restaurant saved!')
+	});
+}
+
+function loadRestaurants() {
+	var loadString = fs.readFileSync('saveData.json');
+	return JSON.parse(loadString);
 }
 
 
 // Listen on every connection
 function Listen() {
 	socketio.on('connection', function(socket){
+
+		socket.on('save request', () => {
+			console.log("Save request received!");
+			saveRestaurant(lastSearch);
+		});
+
+		socket.on('load request', () => {
+			savedRestaurants = loadRestaurants();
+			socket.emit('load response', savedRestaurants);
+			});
+
 		socket.on('chat request', (data) => {
 			//console.log('Message: ' + data);
 
@@ -87,22 +104,14 @@ function Listen() {
 					search.placeSearch(getSearchTerm(response.result.parameters)).then((data) => {
 
 						console.log(data);
-						var restaurantName = data.result.name;
-						var address = data.result.formatted_address;
-						var phoneNumber = data.result.formatted_phone_number;
-						var photo = data.result.photos;
-						var website = data.result.website;
-
-						var jsonObj = {
-							restaurant_name : restaurantName,
-							restaurant_address: address,
-							restaurant_phone: phoneNumber,
-							restaurant_website: website
-						}
-						socket.emit('chat complete', {parameters: response.result.parameters, searchData: data}); //Send chatbot parameters
-
-						console.log(data.result);
 						var photoLink = `https://maps.googleapis.com/maps/api/place/photo?maxheight=200&key=${API_KEY}&photoreference=${data.result.photos[0].photo_reference}`
+						lastSearch = {
+							restaurant_name: data.result.name,
+							restaurant_address: data.result.formatted_address,
+							restaurant_phone: data.result.formatted_phone_number,
+							restaurant_website: data.result.website,
+							restaurant_photo: photoLink
+						}
 						socket.emit('chat complete', {parameters: response.result.parameters, searchData: data, photoUrl: photoLink}); //Send chatbot parameters
 
 					});
