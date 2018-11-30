@@ -81,8 +81,8 @@ function saveRestaurant(jsonObj) {
 function loadRestaurants() {
 	try {
 		var loadString = fs.readFileSync('saveData.json');
-		return JSON.parse(loadString);
 		console.log('Loading Restaurants');
+		return JSON.parse(loadString);
 	}catch(error) {
 		return [];
 	}

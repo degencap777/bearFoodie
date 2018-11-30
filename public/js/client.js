@@ -109,7 +109,7 @@ document.getElementById("fav-open").addEventListener("click", function() {
   document.getElementById("home-open").style.color = "grey";
   document.getElementById("fav-open").style.color = "#F07869";
 
-  socket.emit('load request');
+  // socket.emit('load request');
   console.log('Loading...');
   socket.on('load response', function(savedRestaurants){
 
