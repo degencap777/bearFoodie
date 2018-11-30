@@ -122,7 +122,12 @@ document.getElementById("fav-open").addEventListener("click", function() {
       favImage.id = "fav-image";
       favImage.style.backgroundImage = `url("${savedRestaurants[i].restaurant_photo}")`
 
+      var favName = document.createElement("div");
+      favName.id = "fav-name";
+      favName.innerHTML = `${savedRestaurants[i].restaurant_name}`;
+
       div.appendChild(favImage);
+      div.appendChild(favName);
       restaurants.appendChild(div);
     }
   });
