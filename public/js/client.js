@@ -126,6 +126,8 @@ document.getElementById("fav-open").addEventListener("click", function() {
       favName.id = "fav-name";
       favName.innerHTML = `${savedRestaurants[i].restaurant_name}`;
 
+      var favAction = document.createElement("div");
+
       div.appendChild(favImage);
       div.appendChild(favName);
       restaurants.appendChild(div);
