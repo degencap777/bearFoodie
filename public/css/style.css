@@ -286,7 +286,7 @@ Favorites
   background-color: white;
 }
 
-.fav-image {
+#fav-image {
   display: inline-block;
   margin:10px;
   width:125px;
@@ -305,7 +305,7 @@ Favorites
   font-weight: 700;
 }
 
-.fav-action {
+#fav-action {
   display: inline;
   position: absolute;
   padding: 8px;
@@ -316,16 +316,16 @@ Favorites
   cursor: pointer;
 }
 
-.fav-action i, {
+#fav-action i, {
   padding: 8px;
 }
 
-.fav-info i {
+#fav-info i {
   padding-right: 10px;
   color:grey;
 }
 
-.fav-info {
+#fav-info {
   display: inline;
   position: absolute;
   padding:8px;

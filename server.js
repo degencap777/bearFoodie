@@ -20,7 +20,9 @@ const app = express();
 const search = require('./search');
 const save = require('./request');
 
-var lastSearch
+var lastSearch;
+var savedRestaurants;
+var restaurant_name;
 // var restaurantName;
 // var address;
 // var phoneNumber;
@@ -56,20 +58,36 @@ function getSearchTerm(params) {
 		string += params[item] + ' ';
 	}
 	return encodeURI(string);
-}
+};
+
+
+// function saveRestaurant(jsonObj) {
+// 	fs.appendFile('saveData.json', JSON.stringify(jsonObj), function(err, file) {
+// 		if (err) throw err;
+// 		console.log('Restaurant saved!')
+// 	});
+// }
 
 
 function saveRestaurant(jsonObj) {
-	fs.appendFile('saveData.json', JSON.stringify(jsonObj), function(err, file) {
-		if (err) throw err;
-		console.log('Restaurant saved!')
-	});
-}
+	var requests = loadRestaurants();
+
+	requests.push(jsonObj);
+	fs.writeFileSync('saveData.json', JSON.stringify(requests, undefined, 1));
+};
+
+
 
 function loadRestaurants() {
-	var loadString = fs.readFileSync('saveData.json');
-	return JSON.parse(loadString);
-}
+	try {
+		var loadString = fs.readFileSync('saveData.json');
+		return JSON.parse(loadString);
+		console.log('Loading Restaurants');
+	}catch(error) {
+		return [];
+	}
+};
+
 
 
 // Listen on every connection
@@ -83,6 +101,7 @@ function Listen() {
 
 		socket.on('load request', () => {
 			savedRestaurants = loadRestaurants();
+			//console.log(savedRestaurants);
 			socket.emit('load response', savedRestaurants);
 			});
 
@@ -131,4 +150,3 @@ function Listen() {
 }
 
 Listen();
-
