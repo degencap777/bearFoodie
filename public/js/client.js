@@ -8,6 +8,7 @@ const socket = io();
 const query = document.querySelector('#comment');
 const html = document.querySelector('#conversation');
 var restaurants = document.getElementById("restaurants");
+var currentPage = "home";
 
 
 // Get the first element in the docuent with id="chat-send"
@@ -111,28 +112,28 @@ document.getElementById("fav-open").addEventListener("click", function() {
 
   // socket.emit('load request');
   console.log('Loading...');
-  socket.on('load response', function(savedRestaurants){
+  // socket.on('load response', function(savedRestaurants){
 
-    for (var i=0; i<savedRestaurants.length; i++) {
-      console.log('Loading',savedRestaurants[i])
-      var div = document.createElement("div");
-      div.className = "col-sm-12 savedRestaurant";
+  //   for (var i=0; i<savedRestaurants.length; i++) {
+  //     console.log('Loading',savedRestaurants[i])
+  //     var div = document.createElement("div");
+  //     div.className = "col-sm-12 savedRestaurant";
 
-      var favImage = document.createElement("div");
-      favImage.id = "fav-image";
-      favImage.style.backgroundImage = `url("${savedRestaurants[i].restaurant_photo}")`
+  //     var favImage = document.createElement("div");
+  //     favImage.id = "fav-image";
+  //     favImage.style.backgroundImage = `url("${savedRestaurants[i].restaurant_photo}")`
 
-      var favName = document.createElement("div");
-      favName.id = "fav-name";
-      favName.innerHTML = `${savedRestaurants[i].restaurant_name}`;
+  //     var favName = document.createElement("div");
+  //     favName.id = "fav-name";
+  //     favName.innerHTML = `${savedRestaurants[i].restaurant_name}`;
 
-      var favAction = document.createElement("div");
+  //     var favAction = document.createElement("div");
 
-      div.appendChild(favImage);
-      div.appendChild(favName);
-      restaurants.appendChild(div);
-    }
-  });
+  //     div.appendChild(favImage);
+  //     div.appendChild(favName);
+  //     restaurants.appendChild(div);
+  //   }
+  // });
 });
 
 
@@ -174,11 +175,39 @@ document.getElementById("fav-open").addEventListener("click", function() {
 //   });
 // });
 
+socket.on('load response', function(savedRestaurants){
+    for (var i=0; i<savedRestaurants.length; i++) {
+      console.log('Loading',savedRestaurants[i]);
+      var div = document.createElement("div");
+      div.className = "col-sm-12 savedRestaurant";
+
+      var favImage = document.createElement("div");
+      favImage.id = "fav-image";
+      favImage.style.backgroundImage = `url("${savedRestaurants[i].restaurant_photo}")`
+
+      var favName = document.createElement("div");
+      favName.id = "fav-name";
+      favName.innerHTML = `${savedRestaurants[i].restaurant_name}`;
+
+      var favAction = document.createElement("div");
+
+      div.appendChild(favImage);
+      div.appendChild(favName);
+      restaurants.appendChild(div);
+    }
+});
 
 document.getElementById("fav-open").addEventListener("click", function() {
+    if (currentPage != "favs") {
+        socket.emit('load request');
+    }
+    currentPage = "favs";
 	document.getElementById("chat-screen").style.display = "none";
 	document.getElementById("favorites").style.display = "block";
 	document.getElementById("home-open").style.color = "grey";
 	document.getElementById("fav-open").style.color = "#F07869";
-  socket.emit('load request');
 });
+
+document.getElementById("home-open").addEventListener("click", function() {
+    currentPage = "home";
+})
