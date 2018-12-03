@@ -118,6 +118,7 @@ function Listen() {
 				var bc_cities = response.result.parameters.bc_cities;
 				var meal_type = response.result.parameters.meal_type;
 				var occasion = response.result.parameters.occasion;
+				var cuisine = response.result.parameters.cuisine;
 				socket.emit('ai response', chatResponse); // Send messages
 				if(response.result.actionIncomplete == false) {
 					search.placeSearch(getSearchTerm(response.result.parameters)).then((data) => {

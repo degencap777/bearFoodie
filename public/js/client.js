@@ -84,7 +84,7 @@ socket.on('ai response', function(response) {
 
 
 socket.on('chat complete', function(searchData) {
-    document.getElementById("details").innerHTML = `This is a ${searchData.parameters.meal_type} restaurant in ${searchData.parameters.bc_cities}!`;
+    document.getElementById("details").innerHTML = `This is a ${searchData.parameters.meal_type} restaurant that serves ${searchData.parameters.cuisine} in ${searchData.parameters.bc_cities}!`;
     document.getElementById("restaurantName").innerHTML = searchData.searchData.result.name;
     document.getElementById("address").innerHTML = searchData.searchData.result.formatted_address;
     document.getElementById("phoneNum").innerHTML = searchData.searchData.result.formatted_phone_number;
