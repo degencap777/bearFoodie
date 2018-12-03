@@ -309,6 +309,10 @@ Favorites
 ==========================================================================
 */
 
+.savedRestaurant {
+    border-bottom :1px solid rgba(0, 0, 0, .08);
+}
+
 #favorites {
   display:none;
   width:100%;

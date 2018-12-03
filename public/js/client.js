@@ -90,12 +90,6 @@ socket.on('chat complete', function(searchData) {
     document.getElementById("phoneNum").innerHTML = searchData.searchData.result.formatted_phone_number;
     document.getElementById("restaurant-image").style.backgroundImage = `url("${searchData.photoUrl}")`;
     console.log(searchData);
-
-    // document.getElementById("saveButton").addEventListener("click", function() {
-    // console.log('Save button clicked!');
-    // // socket.emit('load request');
-    // socket.emit('save request');
-    // });
 });
 
 
@@ -110,70 +104,11 @@ document.getElementById("fav-open").addEventListener("click", function() {
   document.getElementById("home-open").style.color = "grey";
   document.getElementById("fav-open").style.color = "#F07869";
 
-  // socket.emit('load request');
   console.log('Loading...');
-  // socket.on('load response', function(savedRestaurants){
 
-  //   for (var i=0; i<savedRestaurants.length; i++) {
-  //     console.log('Loading',savedRestaurants[i])
-  //     var div = document.createElement("div");
-  //     div.className = "col-sm-12 savedRestaurant";
-
-  //     var favImage = document.createElement("div");
-  //     favImage.id = "fav-image";
-  //     favImage.style.backgroundImage = `url("${savedRestaurants[i].restaurant_photo}")`
-
-  //     var favName = document.createElement("div");
-  //     favName.id = "fav-name";
-  //     favName.innerHTML = `${savedRestaurants[i].restaurant_name}`;
-
-  //     var favAction = document.createElement("div");
-
-  //     div.appendChild(favImage);
-  //     div.appendChild(favName);
-  //     restaurants.appendChild(div);
-  //   }
-  // });
 });
 
 
-// socket.on('load response', function(savedRestaurants){
-//   document.getElementById("fav-open").addEventListener("click", function() {
-//     document.getElementById("chat-screen").style.display = "none";
-//     document.getElementById("favorites").style.display = "block";
-//     document.getElementById("home-open").style.color = "grey";
-//     document.getElementById("fav-open").style.color = "#F07869";
-//     console.log('Favorite button clicked!');
-//     socket.emit('load request');
-
-//     for (var i=0; i<savedRestaurants.length; i++) {
-//       console.log(savedRestaurants[i])
-//       var div = document.createElement("div");
-//       div.className = "col-sm-12 savedRestaurant";
-
-//       var favImage = document.createElement("div");
-//       favImage.id = "fav-image";
-//       favImage.style.backgroundImage = `url("${savedRestaurants[i].restaurant_photo}")`
-
-//       div.appendChild(favImage);
-//       restaurants.appendChild(div);
-//     }
-
-//     // for (var i=0; i<savedRestaurants.length; i++){
-//     //   console.log(savedRestaurants[i]);
-//     //   var div = document.createElement("div");
-//     //   div.className = "col-sm-12 savedRestaurant";
-
-//     //   var favImage = document.createElement("div");
-//     //   favImage.id = "fav-image";
-
-//     //   div.appendChild(favImage);
-//     //   div.style.width="100px";
-//     //   restaurants.appendChild(div);
-//     // }
-
-//   });
-// });
 
 socket.on('load response', function(savedRestaurants){
     for (var i=0; i<savedRestaurants.length; i++) {
@@ -190,9 +125,18 @@ socket.on('load response', function(savedRestaurants){
       favName.innerHTML = `${savedRestaurants[i].restaurant_name}`;
 
       var favAction = document.createElement("div");
+      favAction.id = "fav-action";
+      favAction.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\
+                  Remove";
+
+      var favAddress = document.createElement("div");
+      favAddress.id="fav-address";
+      favAddress.innerHTML = "<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>" + `${savedRestaurants[i].restaurant_address}`;
 
       div.appendChild(favImage);
       div.appendChild(favName);
+      div.appendChild(favAction);
+      div.appendChild(favAddress);
       restaurants.appendChild(div);
     }
 });
