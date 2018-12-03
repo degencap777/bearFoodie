@@ -127,7 +127,8 @@ socket.on('load response', function(savedRestaurants){
       var favAction = document.createElement("div");
       favAction.id = "fav-action";
       favAction.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\
-                  Remove";
+                  Remove" + "<i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i>\
+                  Share";
 
       var favInfo = document.createElement("div");
       favInfo.id="fav-info";
