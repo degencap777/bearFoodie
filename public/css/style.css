@@ -299,6 +299,7 @@ Display
   height:80%;
   font-weight: 500;
   border:none;
+  color:white;
   cursor: pointer;
   background-color: #F07869;
 }
