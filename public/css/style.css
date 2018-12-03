@@ -381,12 +381,16 @@ Favorites
 #fav-info {
   display: inline;
   position: absolute;
-  padding:8px;
-  bottom:0;
-  width:300px;
+  width:100%;
+  bottom:20%;
   height:auto;
- /* background-color: pink;*/
 }
+
+#fav-action {
+
+}
+
+
 /*
 ==========================================================================
 Message

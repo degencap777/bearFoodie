@@ -129,14 +129,26 @@ socket.on('load response', function(savedRestaurants){
       favAction.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\
                   Remove";
 
+      var favInfo = document.createElement("div");
+      favInfo.id="fav-info";
+      favInfo.innerHTML = "";
+
       var favAddress = document.createElement("div");
       favAddress.id="fav-address";
       favAddress.innerHTML = "<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>" + `${savedRestaurants[i].restaurant_address}`;
 
+      var favPhone = document.createElement("div");
+      favPhone.id = "fav-phone";
+      favPhone.innerHTML = "<i class=\"fa fa-phone\" aria-hidden=\"true\"></i>" + `${savedRestaurants[i].restaurant_phone}`;
+
+      favInfo.appendChild(favAddress);
+      favInfo.appendChild(favPhone);
+
       div.appendChild(favImage);
       div.appendChild(favName);
       div.appendChild(favAction);
-      div.appendChild(favAddress);
+      div.appendChild(favInfo);
+
       restaurants.appendChild(div);
     }
 });
