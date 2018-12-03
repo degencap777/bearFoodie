@@ -290,7 +290,7 @@ Display
 .display-save {
   width: auto;
   height:auto;
-  background-color:teal;
+  border:1px solid rgba(0, 0, 0, .08);
 }
 
 #saveButton {
@@ -300,7 +300,7 @@ Display
   font-weight: 500;
   border:none;
   cursor: pointer;
-  background-color:orange;
+  background-color: #F07869;
 }
 
 /*

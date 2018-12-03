@@ -86,8 +86,8 @@ socket.on('ai response', function(response) {
 socket.on('chat complete', function(searchData) {
     document.getElementById("details").innerHTML = `This is a ${searchData.parameters.meal_type} restaurant that serves ${searchData.parameters.cuisine} in ${searchData.parameters.bc_cities}!`;
     document.getElementById("restaurantName").innerHTML = searchData.searchData.result.name;
-    document.getElementById("address").innerHTML = searchData.searchData.result.formatted_address;
-    document.getElementById("phoneNum").innerHTML = searchData.searchData.result.formatted_phone_number;
+    document.getElementById("address").innerHTML = "<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>" + searchData.searchData.result.formatted_address;
+    document.getElementById("phoneNum").innerHTML = "<i class=\"fa fa-phone\" aria-hidden=\"true\"></i>" + searchData.searchData.result.formatted_phone_number;
     document.getElementById("restaurant-image").style.backgroundImage = `url("${searchData.photoUrl}")`;
     console.log(searchData);
 });
