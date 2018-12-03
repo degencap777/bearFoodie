@@ -55,17 +55,18 @@ Header
   height:30px;
   background-color: #f7f7f7;
   border-bottom:1px solid rgba(0, 0, 0, .08);
-  /*background-color:#F07869;*/
+  background-color:#F07869;
 }
 
 
 .header-name {
-  width:100px;
+  width:150px;
   height:auto;
   text-align: center;
   padding:5px !important;
   margin-left:20px;
-  color:#F07869;
+  color:white;
+/*  color:#F07869;*/
 }
 
 
@@ -163,6 +164,9 @@ Display
 .display {
   padding-left: 0 !important;
   padding-right: 0 !important;
+ /* background: url("../images/display_bg.jpg");*/
+/*  background-size: cover;*/
+  background-color: white;
   border-left: 1px solid rgba(0, 0, 0, .08);
 }
 
@@ -171,16 +175,26 @@ Display
   margin-top: 30px !important;
   margin-left: 12%;
   width: 80%;
-  height: auto;
+  height: 100%;
   color:grey;
-  border:1px solid rgba(0, 0, 0, .08);
+/*  border: 1px solid rgba(0, 0, 0, .08);*/
+}
+
+.display-container {
+  border-left: 1px solid rgba(0, 0, 0, .08);
+  border-right: 1px solid rgba(0, 0, 0, .08);
+  height:auto;
 }
 
 .display-title {
   padding:8px 16px;
+  top:10% !important;
+  height:auto;
   width: auto;
-  height: auto;
-  font-weight: 200;
+  font-size:14px;
+  color:black;
+  font-weight: 700;
+  text-align: center;
 }
 
 .display-content {
@@ -210,7 +224,7 @@ Display
 }
 
 .restaurant-name {
-  padding-left:10px !important;
+  padding:5px 0px 0px 10px !important;
   margin:0 !important;
   width: auto;
   height:auto;
@@ -218,24 +232,56 @@ Display
   font-size: 20px;
   color:black;
   z-index: 99999;
+  font-family: "Helvetica";
 }
+
+.restaurant-name p {
+  margin-bottom:0 !important;
+}
+
+
 
 .restaurant-info{
   display: block;
+  padding:5px 0px 0px 10px !important;
   width: 100%;
-  height:100px;
+  height:125px;
   word-wrap: break-word;
   z-index: 99999;
+  font-family: "Helvetica";
 }
 
+.restaurant-info li {
+  font-size: 14px;
+  margin: 8px 5px !important;
+}
+
+.restaurant-reserve i {
+  margin: 5px 5px !important;
+}
+
+
+#reserve, #share {
+  width:120px;
+  text-align: center;
+}
+
+#reserve {
+  margin-left: 10px;
+  text-align: center;
+}
+
+.restaurant-reserve {
+  text-align: center;
+}
 .restaurant-reserve li{
-  display: table-cell;
+  display: inline-table;
   vertical-align: middle;
-  margin-top: 10px !important;
+  margin: 10px !important;
   padding:0 !important;
   width:200px;
-  height:40px;
-  font-size: 15px;
+  font-size: 14px;
+  font-family: Helvetica !important;
   text-align: center;
   border:1px solid rgba(0, 0, 0, .08);
 }
@@ -511,6 +557,7 @@ Message
 
 .reply-recording {
   padding: 5px !important;
+  text-align: center;
 }
 
 .reply-recording i {
@@ -522,6 +569,7 @@ Message
 
 .reply-send {
   padding: 5px !important;
+  text-align: center;
 }
 
 .reply-send i {
@@ -542,7 +590,6 @@ Message
   padding: 5px !important;
   outline: none;
   border: none;
-
   box-shadow: none;
   height: 100%;
   font-size: 12px;
@@ -554,3 +601,4 @@ Message
   text-indent: 5px;
   box-shadow: none;
 }
+
