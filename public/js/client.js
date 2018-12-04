@@ -151,7 +151,10 @@ socket.on('load response', function(savedRestaurants){
 
       var favWebsite = document.createElement("div");
       favWebsite.id = "fav-web";
-      favWebsite.innerHTML = "<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>" + `${savedRestaurants[i].restaurant_website}`;
+      if(savedRestaurants[i].restaurant_website == undefined){
+         favWebsite.innerHTML = "<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>" + "This restaurant website does not exist:(" ;
+      }
+      else {favWebsite.innerHTML = "<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>" + `${savedRestaurants[i].restaurant_website}`};
 
       favInfo.appendChild(favAddress);
       favInfo.appendChild(favPhone);
