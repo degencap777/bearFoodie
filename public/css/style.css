@@ -553,9 +553,10 @@ Message
 /*Reply*/
 
 .reply {
-  height: 60px;
+  height: 55px;
   width: 100%;
-  background-color: #f5f1ee;
+ /* background-color: #f5f1ee;*/
+  background-color: #E0E0E1;
   padding: 10px 5px 10px 5px !important;
   margin: 0 !important;
   z-index: 1000;
@@ -568,7 +569,7 @@ Message
 
 .reply-recording i {
   text-align: center;
-  padding: 5px !important;
+  padding:0 !important;
   color: #93918f;
   cursor: pointer;
 }
@@ -580,7 +581,7 @@ Message
 
 .reply-send i {
   text-align: center;
-  padding: 5px !important;
+  padding: 0 !important;
   color: #93918f;
   cursor: pointer;
 }
