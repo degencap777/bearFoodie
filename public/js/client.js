@@ -1,39 +1,41 @@
-'use strict';
+'use strict'; //Defines that JavaScript code should be executed in "strict mode".
 
-$(function(){
-
-});
-
-const socket = io();
-const query = document.querySelector('#comment');
+// Constants and Variables
+const socket = io(); // a single connection will be established
 const html = document.querySelector('#conversation');
+const query = document.querySelector('#comment');
 var restaurants = document.getElementById("restaurants");
 var currentPage = "home";
 
-
-// Get the first element in the docuent with id="chat-send"
+// Get the first element in the document with "chat-send" icon
 document.querySelector('#chat-send').addEventListener('click', () => {
-	var date = new Date();
-	var htmlResponse	=	"<div class=\"row message-body\">\
-	<div class=\"col-sm-12 message-main-sender\">\
-	<div class=\"sender\">\
-	<div class=\"message-text\">" +
-	query.value +
-	"</div>\
-	<span class=\"message-time-sender\">"
-	+ date.getHours() + ":" + date.getMinutes() +
-	"</span>\
-	</div>\
-	</div>\
-	</div>";
-	query.value = '';
-	console.log(query.value);
-	html.innerHTML = html.innerHTML + htmlResponse;
+    var date = new Date();
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var htmlResponse  = "<div class=\"row message-body\">\
+    <div class=\"col-sm-12 message-main-sender\">\
+    <div class=\"sender\">\
+    <div class=\"message-text\">" +
+    query.value +
+    "</div></div>\ <div class=\"time-sender\">\
+    \<span class=\"message-date-sender\">"
+    + months[date.getMonth()] + " " + date.getDate() +
+    "</span>\
+    \<span class=\"message-time-sender\">"
+    + date.getHours() + ":" + date.getMinutes() +
+    "</span>\
+    </div>\
+    </div>\
+    </div>";
+    html.innerHTML = html.innerHTML + htmlResponse;
+    socket.emit('chat request', query.value);
+    query.value = '';
+    console.log(query.value);
 });
 
+// Get the first element in the document when a user press ENTER
 function replyMain(e){
 	var key = e.which || e.keyCode; //Use either which or keyCode
-    if (key === 13 && query.value != "") { // Enter is 13
+    if (key === 13 && query.value != "") {
     	var date = new Date();
     	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     	var htmlResponse	=	"<div class=\"row message-body\">\
@@ -43,8 +45,8 @@ function replyMain(e){
     	query.value +
     	"</div></div>\ <div class=\"time-sender\">\
     	\<span class=\"message-date-sender\">"
-		+ months[date.getMonth()] + " " + date.getDate() +
-		"</span>\
+		  + months[date.getMonth()] + " " + date.getDate() +
+		  "</span>\
     	\<span class=\"message-time-sender\">"
     	+ date.getHours() + ":" + date.getMinutes() +
     	"</span>\
@@ -58,8 +60,8 @@ function replyMain(e){
     	}
 };
 
-
-socket.on('ai response', function(response) {
+// Get the bot response from server and send it to the browser
+socket.on('bot response', function(response) {
 	var date = new Date();
 	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 	if(response == '') response = '(No answer...)';
@@ -83,6 +85,7 @@ socket.on('ai response', function(response) {
 });
 
 
+// When the conversation ends, it displays search results to the browser from server
 socket.on('chat complete', function(searchData) {
     document.getElementById("display-title").innerHTML = "How about this Restaurant?";
     document.getElementById("details").innerHTML = "<i class=\"fa fa-cutlery\" aria-hidden=\"true\"></i>" +` This is a ${searchData.parameters.meal_type} restaurant that serves ${searchData.parameters.cuisine} in ${searchData.parameters.bc_cities}!`;
@@ -93,12 +96,13 @@ socket.on('chat complete', function(searchData) {
     console.log(searchData);
 });
 
-
+// Sends save request to server to save restaurants when a user click save button
  document.getElementById("saveButton").addEventListener("click", function() {
     console.log('Save button clicked!');
     socket.emit('save request');
 });
 
+// Open a user's favorite restaurant view.
 document.getElementById("fav-open").addEventListener("click", function() {
   document.getElementById("chat-screen").style.display = "none";
   document.getElementById("favorites").style.display = "block";
@@ -106,11 +110,9 @@ document.getElementById("fav-open").addEventListener("click", function() {
   document.getElementById("fav-open").style.color = "#F07869";
 
   console.log('Loading...');
-
 });
 
-
-
+// Load data from json data file and display each restaurant
 socket.on('load response', function(savedRestaurants){
     for (var i=0; i<savedRestaurants.length; i++) {
       console.log('Loading',savedRestaurants[i]);
@@ -128,7 +130,7 @@ socket.on('load response', function(savedRestaurants){
       var favAction = document.createElement("div");
       favAction.id = "fav-action";
       favAction.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\
-                  Remove" + "    "+ "<i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i>\
+                  Remove" + " "+ "<i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i>\
                   Share";
 
       var favInfo = document.createElement("div");
@@ -155,6 +157,8 @@ socket.on('load response', function(savedRestaurants){
     }
 });
 
+
+// Send Load request to server to get saved restaurant data
 document.getElementById("fav-open").addEventListener("click", function() {
     if (currentPage != "favs") {
         socket.emit('load request');
@@ -166,6 +170,7 @@ document.getElementById("fav-open").addEventListener("click", function() {
 	document.getElementById("fav-open").style.color = "#F07869";
 });
 
+// Open home chat page
 document.getElementById("home-open").addEventListener("click", function() {
     currentPage = "home";
 })

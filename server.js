@@ -1,11 +1,11 @@
-'use strict';
+'use strict'; //Defines that JavaScript code should be executed in "strict mode".
 
 // const port = process.env.PORT || 8080;
 
 const dotenv = require('dotenv'); // DotEnv library will look for the .env file to set the environment variables
 dotenv.load(); // Load qchisq(0.95, 16)our environment variables
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN; // Access environment variables
-const API_KEY = process.env.GOOGLE_KEY
+const API_KEY = process.env.GOOGLE_KEY;
 
 const apiai = require('apiai');
 const ai = apiai(ACCESS_TOKEN);
@@ -51,7 +51,7 @@ app.get('/', (request, response) => {
 
 });
 
-
+// Parse json data for search terms and Return URI encoded string
 function getSearchTerm(params) {
 	var string = "";
 	for (var item in params) {
@@ -60,15 +60,7 @@ function getSearchTerm(params) {
 	return encodeURI(string);
 };
 
-
-// function saveRestaurant(jsonObj) {
-// 	fs.appendFile('saveData.json', JSON.stringify(jsonObj), function(err, file) {
-// 		if (err) throw err;
-// 		console.log('Restaurant saved!')
-// 	});
-// }
-
-
+// Save Restaurant into saveData.json file
 function saveRestaurant(jsonObj) {
 	var requests = loadRestaurants();
 
@@ -77,7 +69,7 @@ function saveRestaurant(jsonObj) {
 };
 
 
-
+// Load a user's saved restaurant data from saveData.json
 function loadRestaurants() {
 	try {
 		var loadString = fs.readFileSync('saveData.json');
@@ -89,8 +81,7 @@ function loadRestaurants() {
 };
 
 
-
-// Listen on every connection
+// Socket io Listener - Listen on every connection
 function Listen() {
 	socketio.on('connection', function(socket){
 
@@ -119,7 +110,7 @@ function Listen() {
 				var meal_type = response.result.parameters.meal_type;
 				var occasion = response.result.parameters.occasion;
 				var cuisine = response.result.parameters.cuisine;
-				socket.emit('ai response', chatResponse); // Send messages
+				socket.emit('bot response', chatResponse); // Send messages
 				if(response.result.actionIncomplete == false) {
 					search.placeSearch(getSearchTerm(response.result.parameters)).then((data) => {
 
