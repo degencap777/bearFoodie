@@ -64,9 +64,7 @@ Header
 /*  color:#F07869;*/
 }
 
-.header-name i {
-  color:white;
-}
+
 
 /*
 ==========================================================================
@@ -610,3 +608,6 @@ Message
   box-shadow: none;
 }
 
+.header-name i {
+  color:white !important;
+}
