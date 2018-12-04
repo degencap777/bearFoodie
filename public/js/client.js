@@ -85,10 +85,10 @@ socket.on('ai response', function(response) {
 
 socket.on('chat complete', function(searchData) {
     document.getElementById("display-title").innerHTML = "How about this Restaurant?";
-    document.getElementById("details").innerHTML = "<i class=\"fa fa-cutlery\" aria-hidden=\"true\"></i>" +`This is a ${searchData.parameters.meal_type} restaurant that serves ${searchData.parameters.cuisine} in ${searchData.parameters.bc_cities}!`;
+    document.getElementById("details").innerHTML = "<i class=\"fa fa-cutlery\" aria-hidden=\"true\"></i>" +` This is a ${searchData.parameters.meal_type} restaurant that serves ${searchData.parameters.cuisine} in ${searchData.parameters.bc_cities}!`;
     document.getElementById("restaurantName").innerHTML = searchData.searchData.result.name;
-    document.getElementById("address").innerHTML = "<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>" + searchData.searchData.result.formatted_address;
-    document.getElementById("phoneNum").innerHTML = "<i class=\"fa fa-phone\" aria-hidden=\"true\"></i>" + searchData.searchData.result.formatted_phone_number;
+    document.getElementById("address").innerHTML = "<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>" + " " + searchData.searchData.result.formatted_address;
+    document.getElementById("phoneNum").innerHTML = "<i class=\"fa fa-phone\" aria-hidden=\"true\"></i>" + " " +  searchData.searchData.result.formatted_phone_number;
     document.getElementById("restaurant-image").style.backgroundImage = `url("${searchData.photoUrl}")`;
     console.log(searchData);
 });
@@ -128,7 +128,7 @@ socket.on('load response', function(savedRestaurants){
       var favAction = document.createElement("div");
       favAction.id = "fav-action";
       favAction.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\
-                  Remove" + "<i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i>\
+                  Remove" + "    "+ "<i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i>\
                   Share";
 
       var favInfo = document.createElement("div");

@@ -17,6 +17,8 @@ style.css
 }
 
 
+
+
 html, body, div {
   height: 100%;
   width: 100%;
@@ -285,7 +287,9 @@ Display
   text-align: center;
   border:1px solid rgba(0, 0, 0, .08);
 }
-
+ #icon {
+  color:#51AC9D;
+ }
 
 .display-save {
   width: auto;
@@ -387,6 +391,9 @@ Favorites
   height:auto;
 }
 
+#fav-address i, #fav-phone i{
+  color: #51AC9D;
+}
 
 
 /*
