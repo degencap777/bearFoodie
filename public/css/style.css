@@ -235,12 +235,11 @@ Display
 }
 
 
-
 .restaurant-info{
   display: block;
   padding:5px 0px 0px 10px !important;
   width: 100%;
-  height:125px;
+  height:auto;
   word-wrap: break-word;
   z-index: 99999;
   font-family: "Helvetica";
@@ -280,9 +279,6 @@ Display
   text-align: center;
   border:1px solid rgba(0, 0, 0, .08);
 }
- #icon {
-  color:#51AC9D;
- }
 
 .display-save {
   width: auto;
@@ -301,6 +297,10 @@ Display
   background-color: #F07869;
 }
 
+
+i.fa.fa-cutlery, i.fa.fa-map-marker, i.fa.fa-phone, i.fa.fa-info-circle {
+  color:#51AC9D;
+}
 /*
 ==========================================================================
 Favorites
@@ -384,7 +384,7 @@ Favorites
   height:auto;
 }
 
-#fav-address i, #fav-phone i{
+#fav-address i, #fav-phone i, #fav-web i{
   color: #51AC9D;
 }
 

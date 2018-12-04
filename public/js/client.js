@@ -92,6 +92,10 @@ socket.on('chat complete', function(searchData) {
     document.getElementById("restaurantName").innerHTML = searchData.searchData.result.name;
     document.getElementById("address").innerHTML = "<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>" + " " + searchData.searchData.result.formatted_address;
     document.getElementById("phoneNum").innerHTML = "<i class=\"fa fa-phone\" aria-hidden=\"true\"></i>" + " " +  searchData.searchData.result.formatted_phone_number;
+    if (searchData.searchData.result.website == undefined){
+       document.getElementById("website").innerHTML = "<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>" +" " + "This restaurant website does not exist:(";
+    }
+    else {document.getElementById("website").innerHTML = "<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>" +" " + searchData.searchData.result.website};
     document.getElementById("restaurant-image").style.backgroundImage = `url("${searchData.photoUrl}")`;
     console.log(searchData);
 });
@@ -145,8 +149,13 @@ socket.on('load response', function(savedRestaurants){
       favPhone.id = "fav-phone";
       favPhone.innerHTML = "<i class=\"fa fa-phone\" aria-hidden=\"true\"></i>" + `${savedRestaurants[i].restaurant_phone}`;
 
+      var favWebsite = document.createElement("div");
+      favWebsite.id = "fav-web";
+      favWebsite.innerHTML = "<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>" + `${savedRestaurants[i].restaurant_website}`;
+
       favInfo.appendChild(favAddress);
       favInfo.appendChild(favPhone);
+      favInfo.appendChild(favWebsite);
 
       div.appendChild(favImage);
       div.appendChild(favName);

@@ -18,7 +18,7 @@ const fs = require('fs');
 const app = express();
 
 const search = require('./search');
-const save = require('./request');
+
 
 var lastSearch;
 var savedRestaurants;
