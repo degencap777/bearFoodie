@@ -1,6 +1,6 @@
 'use strict'; //Defines that JavaScript code should be executed in "strict mode".
 
-const port = process.env.PORT || 8080;
+// const port = process.env.PORT || 8080;
 
 const dotenv = require('dotenv'); // DotEnv library will look for the .env file to set the environment variables
 dotenv.load(); // Load qchisq(0.95, 16)our environment variables
@@ -144,6 +144,6 @@ function Listen() {
 Listen();
 
 
-app.listen(port, () => {
-	console.log(`Server is up on the port ${port}`);
-});
+// app.listen(port, () => {
+// 	console.log(`Server is up on the port ${port}`);
+// });
