@@ -186,7 +186,7 @@ Display
   height:auto;
 }
 
-.display-title {
+#display-title {
   padding:8px 16px;
   top:10% !important;
   height:auto;
@@ -209,7 +209,7 @@ Display
   width: auto;
   height:200px;
   word-wrap: break-word;
-  background-image: url("https://gyozabar.ca/wp-content/uploads/2015/03/IMG_8531-2-1030x687.jpg");
+  background-image: url("../images/display_bg.jpg");
   background-size: cover;
 }
 
