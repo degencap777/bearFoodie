@@ -450,7 +450,7 @@ Message
   padding: 0 !important;
   margin: 0 !important;
   background-size: cover;
-  overflow:hidden !important;
+  overflow-y:scroll !important;
   border: 1px solid #f7f7f7;
   height: calc(100% - 100px);
 }
