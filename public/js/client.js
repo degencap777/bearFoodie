@@ -174,3 +174,9 @@ document.getElementById("fav-open").addEventListener("click", function() {
 document.getElementById("home-open").addEventListener("click", function() {
     currentPage = "home";
 })
+
+// Scroll automatically
+window.setInterval(function(){
+  var elem = document.getElementById("conversation");
+  elem.scrollTop = elem.scrollHeight;
+}, 1000);

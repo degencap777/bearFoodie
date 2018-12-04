@@ -17,8 +17,6 @@ style.css
 }
 
 
-
-
 html, body, div {
   height: 100%;
   width: 100%;
@@ -451,11 +449,10 @@ Message
 .message {
   padding: 0 !important;
   margin: 0 !important;
-  /*background: url("w.jpg") no-repeat fixed center;*/
   background-size: cover;
-  overflow-y: auto;
+  overflow:hidden !important;
   border: 1px solid #f7f7f7;
-  height: calc(100% - 120px);
+  height: calc(100% - 100px);
 }
 
 .message-body {
