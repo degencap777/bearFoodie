@@ -168,10 +168,10 @@ Display
 
 .display-info {
   display: block;
-  margin-top: 30px !important;
+  margin-top: 5px !important;
   margin-left: 12%;
   width: 80%;
-  height: 100%;
+  height: 95%;
   color:grey;
 /*  border: 1px solid rgba(0, 0, 0, .08);*/
 }
